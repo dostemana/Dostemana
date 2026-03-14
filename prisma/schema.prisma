@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Friend {
+  id Int @id @default(autoincrement())
+  name String
+  createdAt DateTime @default(now())
+  notes String?
+  Tags Tag[]
+
+  friendshipsA Friendship[] @relation("FriendA")
+  friendshipsB Friendship[] @relation("FriendB")
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+  name String
+  friendId Int
+  friend Friend @relation(fields: [friendId], references: [id])
+}
+
+model Friendship {
+  id Int @id @default(autoincrement())
+
+  friendAId Int
+  friendBId Int
+
+  friendA Friend @relation("FriendA", fields: [friendAId], references: [id])
+  friendB Friend @relation("FriendB", fields: [friendBId], references: [id])
+
+  @@unique([friendAId, friendBId])
+}
