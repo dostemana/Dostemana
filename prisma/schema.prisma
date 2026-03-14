@@ -17,7 +17,10 @@ model Friend {
   name String
   createdAt DateTime @default(now())
   notes String?
+
   Tags Tag[]
+  primaryTagId Int?
+  primaryTag Tag? @relation("PrimaryTag", fields: [primaryTagId], references: [id])
 
   friendshipsA Friendship[] @relation("FriendA")
   friendshipsB Friendship[] @relation("FriendB")
@@ -26,8 +29,10 @@ model Friend {
 model Tag {
   id Int @id @default(autoincrement())
   name String
+
   friendId Int
   friend Friend @relation(fields: [friendId], references: [id])
+  primaryFor Friend[] @relation("PrimaryTag")
 }
 
 model Friendship {
