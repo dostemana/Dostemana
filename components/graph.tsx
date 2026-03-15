@@ -11,3 +11,5 @@ export default function Graph({ elements }) {
     />
   );
 }
+
+// reads from api
