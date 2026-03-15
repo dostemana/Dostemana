@@ -1,0 +1,28 @@
+{
+  "name": "dostemana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dostemana/Dostemana.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dostemana/Dostemana/issues"
+  },
+  "homepage": "https://github.com/dostemana/Dostemana#readme",
+  "dependencies": {
+    "@prisma/client": "^7.5.0",
+    "prisma": "^7.5.0"
+  }
+}
